@@ -5,24 +5,28 @@ env:
     - ABI=default/x86
     - EMU_FLAVOR=default
     - ANDROID_HOME=/usr/local/android-sdk
+    - ANDROID_SDK_ROOT=/usr/local/android-sdk    
     - TOOLS=${ANDROID_HOME}/tools
     - PATH=${ANDROID_HOME}:${ANDROID_HOME}/emulator:${TOOLS}:${TOOLS}/bin:${ANDROID_HOME}/platform-tools:${PATH}    
 android:
   components:
     - android-28
     - build-tools-28.0.3
+    - tools
+    - platform-tools
     # Additional components
     - extra-google-google_play_services
     - extra-google-m2repository
     - extra-android-m2repository
-    # Image Emulator
-    - sys-img-armeabi-v7a-android-28
+    # Image Emulator    
     - sys-img-x86-android-28
 before_install:
   - chmod +x run_all_tests.sh
+install:  
+  - echo y | sdkmanager "platforms;android-28"
 # Emulator Management: Create, Start and Wait
 before_script:
-  - echo no | android create avd --force -n test -t android-28 --abi $ABI -c 100M
+  - echo no | android create avd --force -n test -t android-27 --abi $ABI -c 100M
   - emulator -verbose -avd test -no-accel -no-snapshot -no-window -camera-back none -camera-front none -selinux permissive -qemu -m 2048 &
   - android-wait-for-emulator
   - adb shell input keyevent 82 &
