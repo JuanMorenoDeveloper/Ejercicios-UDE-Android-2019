@@ -4,7 +4,12 @@ android:
   components:
     - android-28
     - build-tools-28.0.3
-    - sys-img-x86-android-28
+    # Additional components
+    - extra-google-google_play_services
+    - extra-google-m2repository
+    - extra-android-m2repository
+    # Image Emulator
+    - sys-img-armeabi-v7a-android-28
 before_install:
   - chmod +x run_all_tests.sh
 # Emulator Management: Create, Start and Wait
@@ -18,3 +23,4 @@ script:
 env:
   global:
     - export ANDROID_SDK_ROOT=/usr/local/android-sdk
+    - export ANDROID_ABI=armeabi-v7a
