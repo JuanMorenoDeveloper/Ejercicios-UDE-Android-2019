@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
-
+def integrationTests = false
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -27,8 +27,20 @@ android {
     testOptions {
         unitTests {
             includeAndroidResources = true
+            returnDefaultValues = true
             all {
                 jacoco.includeNoLocationClasses = true
+                test {
+                    filter {
+                        if (integrationTests.toBoolean()) {
+                            includeTestsMatching "*IntegrationTest"
+                            includeTestsMatching "*InstrumentedTest"
+                        } else {
+                            includeTestsMatching "*UnitTest"
+                            includeTestsMatching "*RobolectricTest"
+                        }
+                    }
+                }
             }
         }
     }
