@@ -2,7 +2,7 @@ language: android
 jdk: openjdk8
 env:
   global:
-    - ABI=default/x86
+    - ABI=x86
     - EMU_FLAVOR=default
     - ANDROID_HOME=/usr/local/android-sdk
     - ANDROID_SDK_ROOT=/usr/local/android-sdk    
