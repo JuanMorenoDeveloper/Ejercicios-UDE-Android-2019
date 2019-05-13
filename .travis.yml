@@ -10,7 +10,7 @@ env:
     - PATH=${ANDROID_HOME}:${ANDROID_HOME}/emulator:${TOOLS}:${TOOLS}/bin:${ANDROID_HOME}/platform-tools:${PATH}    
 android:
   components:
-    - android-28
+    - android-28    
     - build-tools-28.0.3
     - tools
     - platform-tools
@@ -19,7 +19,7 @@ android:
     - extra-google-m2repository
     - extra-android-m2repository
     # Image Emulator    
-    - sys-img-x86-android-28
+    - sys-img-x86-android-27
 before_install:
   - chmod +x run_all_tests.sh
 install:  
