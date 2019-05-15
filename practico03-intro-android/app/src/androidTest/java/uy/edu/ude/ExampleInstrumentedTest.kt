@@ -4,8 +4,8 @@ import androidx.test.espresso.Espresso
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.ViewMatchers
-import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
 import org.junit.Assert.assertEquals
 import org.junit.Rule
@@ -28,10 +28,10 @@ class ExampleInstrumentedTest {
         val appContext = InstrumentationRegistry.getInstrumentation().getTargetContext()
         assertEquals("uy.edu.ude", appContext.packageName)
     }
+
     @Test
     fun givenValidInput_whenClickOnBtnHello_thenShowHello() {
         val validInput = "Test"
-
         Espresso.onView(ViewMatchers.withId(R.id.edText)).perform(ViewActions.typeText(validInput))
 
         Espresso.onView(ViewMatchers.withId(R.id.btnHello)).perform(ViewActions.click())
@@ -39,4 +39,17 @@ class ExampleInstrumentedTest {
         Espresso.onView(ViewMatchers.withId(R.id.tvHello))
             .check(ViewAssertions.matches(ViewMatchers.withText("Hola $validInput")))
     }
+
+    @Test
+    fun givenInvalidInput_whenClickOnBtnHello_thenShowError() {
+        val invalidInput = "invalidInput"
+        //ActivityScenario.launch(MainActivity::class.java)
+        Espresso.onView(ViewMatchers.withId(R.id.edText)).perform(ViewActions.typeText(invalidInput))
+
+        Espresso.onView(ViewMatchers.withId(R.id.btnHello)).perform(ViewActions.click())
+
+        Espresso.onView(ViewMatchers.withId(R.id.edText))
+            .check(ViewAssertions.matches(ViewMatchers.hasErrorText("Entrada incorrecta")))
+    }
+
 }
