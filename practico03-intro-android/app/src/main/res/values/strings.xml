@@ -1,3 +1,4 @@
 <resources>
   <string name="app_name">practico03-android-layout</string>
+  <string name="btn_hello">OK</string>
 </resources>
