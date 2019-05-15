@@ -23,18 +23,6 @@ class ExampleRobolectricTest {
         onView(withId(R.id.tvHello)).check(matches(withText("Hello World!")))
     }
 
-    @Ignore
-    @Test
-    fun givenInvalidInput_whenClickOnBtnHello_thenShowError() {
-        val invalidInput = "invalidInput"
-        //ActivityScenario.launch(MainActivity::class.java)
-        onView(withId(R.id.edText)).perform(typeText(invalidInput))
-
-        onView(withId(R.id.btnHello)).perform(click())
-
-        onView(withId(R.id.edText)).check(matches(hasErrorText("Entrada incorrecta")))
-    }
-
     @Test
     fun givenValidInput_whenClickOnBtnHello_thenShowHello() {
         val validInput = "Test"
