@@ -1,4 +1,10 @@
 <resources>
-  <string name="app_name">practico03-android-layout</string>
-  <string name="btn_hello">OK</string>
+    <string name="app_name">practico03-android-layout</string>
+    <string name="btn_hello">OK</string>
+    <string name="usuario">Usuario</string>
+    <string name="ingrese_su_usuario">Ingrese su usuario</string>
+    <string name="ingrese_su_contrase_a">Ingrese su contraseña</string>
+    <string name="login">Login</string>
+    <string name="contrase_a">Contraseña</string>
+    <string name="resultado">Resultado</string>
 </resources>
