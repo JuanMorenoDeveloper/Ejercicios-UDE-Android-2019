@@ -7,4 +7,6 @@
     <string name="login">Login</string>
     <string name="contrase_a">Contraseña</string>
     <string name="resultado">Resultado</string>
+    <string name="hint_n1">N1:</string>
+    <string name="hint_n2">N2:</string>
 </resources>
