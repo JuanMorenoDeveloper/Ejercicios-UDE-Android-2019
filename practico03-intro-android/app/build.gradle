@@ -38,6 +38,8 @@ android {
                         } else {
                             includeTestsMatching "*UnitTest"
                             includeTestsMatching "*RobolectricTest"
+                            exclude "*IntegrationTest*"
+                            exclude "*InstrumentedTest*"
                         }
                     }
                 }
