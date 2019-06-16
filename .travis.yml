@@ -12,8 +12,8 @@ env:
     - ANDROID_HOME=/usr/local/android-sdk
     - TOOLS=${ANDROID_HOME}/tools
     - PATH=${ANDROID_HOME}:${ANDROID_HOME}/emulator:${TOOLS}:${TOOLS}/bin:${ANDROID_HOME}/platform-tools:${PATH}
-  matrix:
-   - API=22
+#  matrix:
+#   - API=22
 #   - API=23
 #   - API=24
 #   - API=25
