@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:textSize="30sp"/>
     <EditText
-            android:inputType="text"
+            android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/edPassword" android:textSize="30sp"
             android:hint="@string/ingrese_su_contrase_a" android:importantForAutofill="no"/>
