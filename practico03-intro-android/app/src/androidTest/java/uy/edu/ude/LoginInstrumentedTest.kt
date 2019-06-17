@@ -21,6 +21,7 @@ class LoginInstrumentedTest {
     fun givenValidUser_whenDoLogin_thenGetOk() {
         onView(withId(R.id.edUsuario)).perform(typeText("user"))
         onView(withId(R.id.edPassword)).perform(typeText("secret")).perform(closeSoftKeyboard());
+        Thread.sleep(250);
 
         onView(withId(R.id.btnLogin)).perform(click())
 
