@@ -1,10 +1,10 @@
 package uy.edu.ude.login.presenter
 
 import uy.edu.ude.login.interactor.LoginInteractor
-import uy.edu.ude.login.view.LoginViewActivity
+import uy.edu.ude.login.view.LoginView
 
 class LoginPresenter(
-    var view: LoginViewActivity,
+    var view: LoginView,
     var interactor: LoginInteractor
 ) {
     fun doCheck(usuario: String, password: String) {

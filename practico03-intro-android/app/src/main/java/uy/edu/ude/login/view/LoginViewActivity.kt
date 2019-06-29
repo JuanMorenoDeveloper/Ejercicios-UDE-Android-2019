@@ -8,7 +8,7 @@ import uy.edu.ude.login.interactor.LoginInteractor
 import uy.edu.ude.login.presenter.LoginPresenter
 import uy.edu.ude.validator.LoginValidator
 
-class LoginViewActivity : AppCompatActivity() {
+class LoginViewActivity : AppCompatActivity(),LoginView {
     var presenter: LoginPresenter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,17 +18,17 @@ class LoginViewActivity : AppCompatActivity() {
         btnLogin.setOnClickListener { doLogin() }
     }
 
-    fun doLogin() {
+    override fun doLogin() {
         val usuario = edUsuario.text.toString()
         val password = edPassword.text.toString()
         presenter?.doCheck(usuario, password)
     }
 
-    fun showOk() {
+    override fun showOk() {
         tvResultado.text = "OK"
     }
 
-    fun showNonOk() {
+    override fun showNonOk() {
         tvResultado.text = "No OK"
     }
 }
