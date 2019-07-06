@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Generador de puntos</string>
+    <string name="tv_puntaje">Puntaje</string>
+    <string name="tv_puntaje_max">Puntaje más alto</string>
+    <string name="btn_generar_puntaje">Generar puntaje</string>
+</resources>

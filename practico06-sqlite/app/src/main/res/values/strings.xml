@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">EjemploBdSqlite</string>
+    <string name="id">ID:</string>
+    <string name="nom">Nom:</string>
+    <string name="ins">Ins</string>
+    <string name="act">Act</string>
+    <string name="elim">Elim</string>
+    <string name="cons">Cons</string>
+</resources>

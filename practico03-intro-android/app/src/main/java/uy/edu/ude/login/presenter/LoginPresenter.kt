@@ -4,7 +4,7 @@ import uy.edu.ude.login.interactor.LoginInteractor
 import uy.edu.ude.login.view.LoginView
 
 class LoginPresenter(
-    var view: LoginView,
+    val view: LoginView,
     var interactor: LoginInteractor
 ) {
     fun doCheck(usuario: String, password: String) {
