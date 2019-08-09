@@ -45,7 +45,7 @@ install:
 
 before_script:
   - chmod +x run_all_tests.sh
-
+  - find . -name gradlew -type f -exec chmod +x {} +
 script:
   - ./run_all_tests.sh
 
