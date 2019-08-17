@@ -1,4 +1,4 @@
-package uy.edu.ude.entity
+package uy.edu.ude.archcomponents.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
