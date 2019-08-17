@@ -19,10 +19,9 @@ package uy.edu.ude.archcomponents.main
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.text.TextUtils
-import android.widget.Button
-import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_new_word.*
 import uy.edu.ude.archcomponents.R
 
 /**
@@ -31,20 +30,16 @@ import uy.edu.ude.archcomponents.R
 
 class NewWordActivity : AppCompatActivity() {
 
-    private lateinit var editWordView: EditText
-
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_word)
-        editWordView = findViewById(R.id.edit_word)
 
-        val button = findViewById<Button>(R.id.button_save)
-        button.setOnClickListener {
+        btnSave.setOnClickListener {
             val replyIntent = Intent()
-            if (TextUtils.isEmpty(editWordView.text)) {
+            if (TextUtils.isEmpty(edWord.text)) {
                 setResult(Activity.RESULT_CANCELED, replyIntent)
             } else {
-                val word = editWordView.text.toString()
+                val word = edWord.text.toString()
                 replyIntent.putExtra(EXTRA_REPLY, word)
                 setResult(Activity.RESULT_OK, replyIntent)
             }
