@@ -18,8 +18,8 @@ package uy.edu.ude.archcomponents.repository
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
+import androidx.test.runner.AndroidJUnit4
 import com.example.android.roomwordssample.WordDao
 import com.example.android.roomwordssample.WordRoomDatabase
 import kotlinx.coroutines.runBlocking
@@ -68,35 +68,41 @@ class WordDaoTest {
 
     @Test
     @Throws(Exception::class)
-    fun insertAndGetWord() = runBlocking {
-        val word = Word("word")
-        wordDao.insert(word)
-        val allWords = wordDao.getAlphabetizedWords().waitForValue()
-        assertThat(allWords[0].word).isEqualTo(word.word)
+    fun insertAndGetWord() {
+        runBlocking {
+            val word = Word("word")
+            wordDao.insert(word)
+            val allWords = wordDao.getAlphabetizedWords().waitForValue()
+            assertThat(allWords[0].word).isEqualTo(word.word)
+        }
     }
 
     @Test
     @Throws(Exception::class)
-    fun getAllWords() = runBlocking {
-        val word = Word("aaa")
-        wordDao.insert(word)
-        val word2 = Word("bbb")
-        wordDao.insert(word2)
-        val allWords = wordDao.getAlphabetizedWords().waitForValue()
+    fun getAllWords() {
+        runBlocking {
+            val word = Word("aaa")
+            wordDao.insert(word)
+            val word2 = Word("bbb")
+            wordDao.insert(word2)
+            val allWords = wordDao.getAlphabetizedWords().waitForValue()
 
-        assertThat(allWords[0].word).isEqualTo(word.word)
-        assertThat(allWords[1].word).isEqualTo(word2.word)
+            assertThat(allWords[0].word).isEqualTo(word.word)
+            assertThat(allWords[1].word).isEqualTo(word2.word)
+        }
     }
 
     @Test
     @Throws(Exception::class)
-    fun deleteAll() = runBlocking {
-        val word = Word("word")
-        wordDao.insert(word)
-        val word2 = Word("word2")
-        wordDao.insert(word2)
-        wordDao.deleteAll()
-        val allWords = wordDao.getAlphabetizedWords().waitForValue()
-        assertThat(allWords.isEmpty()).isTrue()
+    fun deleteAll() {
+        runBlocking {
+            val word = Word("word")
+            wordDao.insert(word)
+            val word2 = Word("word2")
+            wordDao.insert(word2)
+            wordDao.deleteAll()
+            val allWords = wordDao.getAlphabetizedWords().waitForValue()
+            assertThat(allWords.isEmpty()).isTrue()
+        }
     }
 }
