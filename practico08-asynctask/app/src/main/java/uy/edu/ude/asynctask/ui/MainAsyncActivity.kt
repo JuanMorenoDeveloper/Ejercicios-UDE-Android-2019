@@ -7,6 +7,7 @@ import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.widget.Button
 import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import uy.edu.ude.asynctask.R
 import uy.edu.ude.asynctask.logic.TimerAsyncTask
@@ -28,12 +29,15 @@ class MainAsyncActivity : AppCompatActivity(), MainViewAsync {
         btnCancel = findViewById(R.id.btnCancel)
         pbNumeric = findViewById(R.id.pbNumeric)
         btnOk.setOnClickListener({
+            //Las AsyncTask no se pueden reutilizar
             timerAsync = TimerAsyncTask(this)
-            timerAsync.execute()
+            timerAsync.execute()//Inicia la tarea asincrona
         })
         btnCancel.setOnClickListener({
-            val isCancel = timerAsync.cancel(true)
+            //val isCancel = timerAsync.cancel(true)
+            val isCancel = timerAsync.cancel(false)
             Log.i("MainAsyncActivity", "$isCancel")
+            Toast.makeText(this, "Tarea cancelada", Toast.LENGTH_SHORT).show()
         })
     }
 
