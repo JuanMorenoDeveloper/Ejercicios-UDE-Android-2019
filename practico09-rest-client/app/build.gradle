@@ -131,7 +131,7 @@ android {
         abortOnError false
         xmlReport false
         htmlReport true
-        lintConfig file("$configDir/lint.xml")
+        lintConfig file("$configDir/lint.network_security_config")
         htmlOutput file("$reportsDir/lint.html")
     }
 }

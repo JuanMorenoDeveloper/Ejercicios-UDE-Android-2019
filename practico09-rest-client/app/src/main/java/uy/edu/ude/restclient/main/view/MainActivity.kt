@@ -19,6 +19,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun sendQuery() {
+        // Si invocamos el servicio desde el thread principal nos va producir un error
+        // val quote = QuoteApiHttpUrl("http://gturnquist-quoters.cfapps.io/api")
+        // val response = quote.findQuoteById(2)
         MainAsyncTask().execute("")
     }
 }
