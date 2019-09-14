@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">practico09-rest-client</string>
+    <string name="tv_type">Type</string>
+    <string name="tv_id">Id</string>
+    <string name="tv_quote">Quote</string>
+    <string name="btn_ok">Send Query</string>
 </resources>
