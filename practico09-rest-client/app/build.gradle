@@ -33,13 +33,13 @@ android {
                 test {
                     filter {
                         if (integrationTests.toBoolean()) {
-                            includeTestsMatching "*IntegrationTest*"
-                            includeTestsMatching "*InstrumentedTest*"
+                            includeTestsMatching "*IntegrationTest"
+                            includeTestsMatching "*InstrumentedTest"
                         } else {
                             includeTestsMatching "*UnitTest"
                             includeTestsMatching "*RobolectricTest"
-                            exclude "*IntegrationTest*"
-                            exclude "*InstrumentedTest*"
+                            exclude "*IntegrationTest"
+                            exclude "*InstrumentedTest"
                         }
                     }
                 }

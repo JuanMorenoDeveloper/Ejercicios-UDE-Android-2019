@@ -7,8 +7,8 @@ import uy.edu.ude.restclient.entities.Response
 
 class ResponseConverter : Converter<ResponseBody, Response> {
 
-    override fun convert(value: ResponseBody): Response {
-        val json = JSONObject(value.string())
+    override fun convert(body: ResponseBody): Response {
+        val json = JSONObject(body.string())
         val type = json.getString("type")
         val value = json.getJSONObject("value")
         val id = value.getInt("id")
