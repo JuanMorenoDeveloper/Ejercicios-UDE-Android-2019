@@ -1,32 +1,34 @@
 package uy.edu.ude.restclient.services
 
 import android.util.Log
+import okhttp3.OkHttpClient
+import okhttp3.Request
 import org.json.JSONObject
 import uy.edu.ude.restclient.entities.Response
 import uy.edu.ude.restclient.usecases.QuoteApi
-import java.io.BufferedReader
-import java.io.InputStreamReader
-import java.net.HttpURLConnection
 import java.net.URL
 
-class QuoteApiHttpUrl(private val urlService: String) : QuoteApi {
+
+class QuoteApiOkHttp(private val urlService: String) : QuoteApi {
     companion object {
         val TAG = "QuoteApiHttpUrl"
     }
 
     override fun findQuoteById(id: String): Response {
         val url = URL("$urlService" + "api/$id")
-        val httpUrlConnection: HttpURLConnection = url.openConnection() as HttpURLConnection
-        httpUrlConnection.requestMethod = "GET"
-        val input = BufferedReader(InputStreamReader(httpUrlConnection.inputStream))
-        var inputline = input.readLine()
-        val result = StringBuilder()
-        while (inputline != null) {
-            result.append(inputline)
-            inputline = input.readLine()
+        val client = OkHttpClient()
+        val request: Request
+        val response: okhttp3.Response
+        client.run {
+            request = Request.Builder()
+                .url(url)
+                .build()
+            response = client.newCall(request).execute()
         }
-        Log.i(TAG, "Respuesta del servicio $result")
-        return jsonToResponse(result.toString())
+        //El response.body solo se puede llamar una vez, luego cierra el buffer
+        val body = response.body()!!.string()
+        Log.i(TAG, "Respuesta del servicio ${body}")
+        return jsonToResponse(body)
     }
 
     private fun jsonToResponse(input: String): Response {
