@@ -5,16 +5,16 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 import org.junit.runner.RunWith
 import uy.edu.ude.restclient.entities.Response
-import uy.edu.ude.restclient.services.QuoteApiHttpUrl
+import uy.edu.ude.restclient.services.DefaultQuoteApiRetrofit
 
 @RunWith(AndroidJUnit4::class)
-class QuoteApiHttpUrlIntegrationTest {
+class QuoteApiRetrofitIntegrationTest {
 
     @Test
     fun givenId_whenFindQuoteById_thenGetResponse() {
         //Arrange
-        val urlService = "http://gturnquist-quoters.cfapps.io/api"
-        val api = QuoteApiHttpUrl(urlService)
+        val urlService = "http://gturnquist-quoters.cfapps.io/"
+        val api = DefaultQuoteApiRetrofit(urlService)
         val id = 2
         val expected = Response(
             "success",
