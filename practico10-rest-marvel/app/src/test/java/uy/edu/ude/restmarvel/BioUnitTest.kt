@@ -23,7 +23,7 @@ class BioUnitTest {
         val hash = Hashing.md5().hashString(
             timestamp.toString() + privateKey + apiKey,
             Charsets.UTF_8
-        ).toString()!!
+        ).toString()
         println(timestamp)
         println(hash)
 
