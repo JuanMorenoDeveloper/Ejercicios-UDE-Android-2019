@@ -33,6 +33,7 @@ class LoginViewActivity : AppCompatActivity(),LoginView {
             MainActivity::class.java
         )
         startActivity(intent)
+        finish()//Cierra la activity actual
     }
 
     override fun showNonOk() {
