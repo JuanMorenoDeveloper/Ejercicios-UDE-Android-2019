@@ -1,8 +1,10 @@
 package uy.edu.ude.login.view
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_login.*
+import uy.edu.ude.MainActivity
 import uy.edu.ude.R
 import uy.edu.ude.login.interactor.LoginInteractor
 import uy.edu.ude.login.presenter.LoginPresenter
@@ -26,6 +28,11 @@ class LoginViewActivity : AppCompatActivity(),LoginView {
 
     override fun showOk() {
         tvResultado.text = "OK"
+        val intent = Intent(
+            this@LoginViewActivity,
+            MainActivity::class.java
+        )
+        startActivity(intent)
     }
 
     override fun showNonOk() {

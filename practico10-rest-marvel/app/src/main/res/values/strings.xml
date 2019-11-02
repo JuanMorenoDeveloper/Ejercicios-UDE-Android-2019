@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">practico10-rest-marvel</string>
+    <string name="tv_name">Name</string>
+    <string name="tv_description">Description</string>
+    <string name="tv_number_comics"># Comics</string>
+    <string name="tv_id">ID</string>
+    <string name="btn_ok">Send Query</string>
+</resources>
