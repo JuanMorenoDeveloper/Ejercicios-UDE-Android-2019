@@ -10,7 +10,7 @@ import uy.edu.ude.login.interactor.LoginInteractor
 import uy.edu.ude.login.presenter.LoginPresenter
 import uy.edu.ude.validator.LoginValidator
 
-class LoginViewActivity : AppCompatActivity(),LoginView {
+class LoginViewActivity : AppCompatActivity(), LoginView {
     var presenter: LoginPresenter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +33,7 @@ class LoginViewActivity : AppCompatActivity(),LoginView {
             MainActivity::class.java
         )
         startActivity(intent)
-        finish()//Cierra la activity actual
+        finish() // Cierra la activity actual
     }
 
     override fun showNonOk() {
