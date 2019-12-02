@@ -2,7 +2,7 @@ language: android
 jdk: openjdk8
 
 sudo: required
-dist: precise
+dist: trusty
 
 env:
   global:
