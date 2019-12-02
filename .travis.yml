@@ -46,7 +46,7 @@ android:
 # Emulator Management: Create, Start and Wait
 before_script:
   - echo no | android create avd --force -n test -t "android-"$EMULATOR_API_LEVEL --abi $ANDROID_ABI --tag $ANDROID_TAG
-  - emulator -verbose -avd test -no-accel -no-snapshot -no-window -camera-back none -camera-front none -selinux permissive -qemu -m 2048 &
+  - emulator -verbose -avd test -no-accel -no-snapshot -no-window -camera-back none -camera-front none -selinux permissive -qemu -m 2048 -partition-size 3096 &
   - android-wait-for-emulator
   - adb shell input keyevent 82 &
   - chmod +x run_all_tests.sh
