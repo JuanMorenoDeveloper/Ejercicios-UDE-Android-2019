@@ -1,6 +1,8 @@
 package uy.edu.ude.restclient.services
 
 import android.util.Log
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONObject
@@ -14,22 +16,23 @@ class QuoteApiOkHttp(private val urlService: String) : QuoteApi {
         val TAG = "QuoteApiHttpUrl"
     }
 
-    override fun findQuoteById(id: String): Response {
-        val url = URL("$urlService" + "api/$id")
-        val client = OkHttpClient()
-        val request: Request
-        val response: okhttp3.Response
-        client.run {
-            request = Request.Builder()
-                .url(url)
-                .build()
-            response = client.newCall(request).execute()
+    override suspend fun findQuoteById(id: String): Response =
+        withContext(Dispatchers.IO) {
+            val url = URL("$urlService" + "api/$id")
+            val client = OkHttpClient()
+            val request: Request
+            val response: okhttp3.Response
+            client.run {
+                request = Request.Builder()
+                    .url(url)
+                    .build()
+                response = client.newCall(request).execute()
+            }
+            //El response.body solo se puede llamar una vez, luego cierra el buffer
+            val body = response.body()!!.string()
+            Log.i(TAG, "Respuesta del servicio ${body}")
+            jsonToResponse(body)
         }
-        //El response.body solo se puede llamar una vez, luego cierra el buffer
-        val body = response.body()!!.string()
-        Log.i(TAG, "Respuesta del servicio ${body}")
-        return jsonToResponse(body)
-    }
 
     private fun jsonToResponse(input: String): Response {
         val json = JSONObject(input)

@@ -1,6 +1,8 @@
 package uy.edu.ude.restclient.services
 
 import android.util.Log
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import org.json.JSONObject
 import uy.edu.ude.restclient.entities.Response
 import uy.edu.ude.restclient.usecases.QuoteApi
@@ -14,20 +16,21 @@ class QuoteApiHttpUrl(private val urlService: String) : QuoteApi {
         val TAG = "QuoteApiHttpUrl"
     }
 
-    override fun findQuoteById(id: String): Response {
-        val url = URL("$urlService" + "api/$id")
-        val httpUrlConnection: HttpURLConnection = url.openConnection() as HttpURLConnection
-        httpUrlConnection.requestMethod = "GET"
-        val input = BufferedReader(InputStreamReader(httpUrlConnection.inputStream))
-        var inputline = input.readLine()
-        val result = StringBuilder()
-        while (inputline != null) {
-            result.append(inputline)
-            inputline = input.readLine()
+    override suspend fun findQuoteById(id: String): Response =
+        withContext(Dispatchers.IO) {
+            val url = URL("$urlService" + "api/$id")
+            val httpUrlConnection: HttpURLConnection = url.openConnection() as HttpURLConnection
+            httpUrlConnection.requestMethod = "GET"
+            val input = BufferedReader(InputStreamReader(httpUrlConnection.inputStream))
+            var inputline = input.readLine()
+            val result = StringBuilder()
+            while (inputline != null) {
+                result.append(inputline)
+                inputline = input.readLine()
+            }
+            Log.i(TAG, "Respuesta del servicio $result")
+            jsonToResponse(result.toString())
         }
-        Log.i(TAG, "Respuesta del servicio $result")
-        return jsonToResponse(result.toString())
-    }
 
     private fun jsonToResponse(input: String): Response {
         val json = JSONObject(input)
